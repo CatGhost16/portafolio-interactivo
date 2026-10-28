@@ -1,0 +1,105 @@
+html { scroll-behavior: smooth; }
+body { padding-top: 56px; overflow-x: hidden; }
+
+/* ---------- HERO ---------- */
+.hero {
+    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    padding: 80px 0;
+}
+
+/* ---------- ANIMACIÓN PERSONALIZADA (@keyframes) ---------- */
+@keyframes deslizar {
+    0%   { opacity: 0; transform: translateX(-100px); color: #ffc107; }
+    60%  { opacity: 1; transform: translateX(10px); }
+    100% { opacity: 1; transform: translateX(0); color: #ffffff; }
+}
+
+.titulo-animado {
+    animation-name: deslizar;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+/* ---------- LOADER (spinner infinito) ---------- */
+@keyframes girar {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 6px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: girar 1s linear infinite;
+}
+
+.spinner-mini {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: girar 0.8s linear infinite;
+    vertical-align: middle;
+}
+
+/* ---------- TRANSFORMACIONES 2D + TRANSITION ---------- */
+.caja {
+    padding: 40px 20px;
+    text-align: center;
+    color: #fff;
+    border-radius: 12px;
+    transition: transform 0.5s ease;
+}
+.caja-rotate { background: #dc3545; }
+.caja-scale  { background: #198754; }
+.caja-skew   { background: #fd7e14; }
+
+.caja-rotate:hover { transform: rotate(10deg); }
+.caja-scale:hover  { transform: scale(1.15); }
+.caja-skew:hover   { transform: skew(-10deg) translateY(-15px); }
+
+/* ---------- TRANSFORMACIONES 3D ---------- */
+.escena-3d {
+    width: 280px;
+    height: 200px;
+    perspective: 800px;
+}
+
+.tarjeta-3d {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+.escena-3d:hover .tarjeta-3d {
+    transform: rotateX(20deg) rotateY(180deg);
+}
+
+.cara {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: #fff;
+    border-radius: 12px;
+    backface-visibility: hidden;
+}
+.frente { background: #0d6efd; }
+.atras  { background: #6f42c1; transform: rotateY(180deg); }
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 576px) {
+    .hero { padding: 50px 0; }
+    .escena-3d { width: 240px; }
+}
